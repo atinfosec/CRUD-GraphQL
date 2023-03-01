@@ -1,0 +1,206 @@
+{
+	"info": {
+		"_postman_id": "767939d5-e415-43b8-aac3-79d17e1e1cf7",
+		"name": "GraphQL API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24760068"
+	},
+	"item": [
+		{
+			"name": "CreateUser",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation {\r\n    createUser(userInput: {\r\n        email: \"atv8797@gmail.com\",\r\n        password: \"test1234\",\r\n        name: \"Ashutosh Verma\"\r\n    }){\r\n        name\r\n        email\r\n    }\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query {\r\n    login(email: \"atv8797@gmail.com\", password: \"test1234\"){\r\n        token\r\n        userId\r\n    }\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreatePost",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2Y0Njg1MDRlN2I1ZjRmZTU4MDY0OTYiLCJlbWFpbCI6ImF0djg3OTdAZ21haWwuY29tIiwiaWF0IjoxNjc2OTYyMDM2LCJleHAiOjE2NzY5NjU2MzZ9.8IqRBodfvGa-FFjOTZym1OBPx4DxZwVnzYvsh13lCA4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation {\r\n    createPost(postInput: {\r\n        title: \"This is my first blog\",\r\n        imageUrl: \"http://localhost:8080/testimage.jpg\",\r\n        content: \"this is the content of first blog post\"\r\n    }){\r\n        title\r\n        content\r\n    }\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Single Post by ID",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2Y0Njg1MDRlN2I1ZjRmZTU4MDY0OTYiLCJlbWFpbCI6ImF0djg3OTdAZ21haWwuY29tIiwiaWF0IjoxNjc2OTYyMDM2LCJleHAiOjE2NzY5NjU2MzZ9.8IqRBodfvGa-FFjOTZym1OBPx4DxZwVnzYvsh13lCA4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query {\r\n    getSinglePost(id: \"63f469834e7b5f4fe580649a\"){\r\n        title\r\n        content\r\n        creator {\r\n            name\r\n        }\r\n    }\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Post",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2Y0Njg1MDRlN2I1ZjRmZTU4MDY0OTYiLCJlbWFpbCI6ImF0djg3OTdAZ21haWwuY29tIiwiaWF0IjoxNjc2OTY1Njk3LCJleHAiOjE2NzY5NjkyOTd9.5e78r737ZJUd7EpoQqfjd70trejXbPpYRo8FnV2DT_Q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation {\r\n    updatePost(postInput: {\r\n            id: \"63f469834e7b5f4fe580649a\",\r\n            title: \"This updated title of first post\",\r\n            content: \"This is updated content of the first post\",\r\n            imageUrl: \"http://localhost/updatedimage.png\"\r\n        })\r\n        {\r\n        _id\r\n        title\r\n        content\r\n        creator {\r\n            name\r\n        }\r\n        updatedAt\r\n    }\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Post",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2Y0Njg1MDRlN2I1ZjRmZTU4MDY0OTYiLCJlbWFpbCI6ImF0djg3OTdAZ21haWwuY29tIiwiaWF0IjoxNjc2OTY1Njk3LCJleHAiOjE2NzY5NjkyOTd9.5e78r737ZJUd7EpoQqfjd70trejXbPpYRo8FnV2DT_Q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation {\r\n    deletePost(id: \"63f479e140f1ce3594d15f91\"){\r\n        message\r\n        _id\r\n    }\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
